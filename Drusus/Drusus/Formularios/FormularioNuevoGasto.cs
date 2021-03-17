@@ -1,70 +1,109 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using Datos;
+using System;
+using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Business.Entities;
-using Business.Logic;
+
 
 namespace Drusus.Formularios
 {
     public partial class FormularioNuevoGasto : Form
     {
-        GastoLogic gas = new GastoLogic();
+
 
         public FormularioNuevoGasto()
         {
             InitializeComponent();
             this.dgvGastos.AutoGenerateColumns = false;
+            Listar();
         }
         private void Listar()
         {
-            GastoLogic ml = new GastoLogic();
 
             try
             {
-                this.dgvGastos.DataSource = ml.GetAll();
+                using (drususEntities db = new drususEntities())
+                {
+                    dgvGastos.DataSource = db.Gastos.ToList();
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
-     
+
         private void FormularioNuevoGasto_Load(object sender, EventArgs e)
         {
             Listar();
         }
 
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            if (dgvGastos.SelectedRows.Count > 0)
+            {
+                var id = (sbasta)dgvGastos.SelectedRows[0].DataBoundItem;
+
+                using (drususEntities db = new drususEntities())
+                {
+
+                    db.Entry(id).State = EntityState.Deleted;
+                    db.SaveChanges();
+                }
+                Listar();
+            }
+        }
         private void btnCrearGasto_Click(object sender, EventArgs e)
         {
-            if (txtDescripcion.Text != "" && txtMonto.Text!="")
+            try
             {
-       string message = "Complete todos los campos";
-            string title = "Registro de gasto";
-            MessageBoxButtons buttons = MessageBoxButtons.OK;
-            DialogResult result = MessageBox.Show(message, title, buttons);
+                Gasto nuevo = new Gasto
+                {
+                    descripcion = txtDescripcion.Text,
+                    costo = int.Parse(txtMonto.Text)
+                };
+
+                using (drususEntities db = new drususEntities())
+                {
+                    db.Gastos.Add(nuevo);
+                    db.SaveChanges();
+                }
+                string message = "Datos guardados";
+                string title = "Registro de gasto";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result = MessageBox.Show(message, title, buttons);
+
+                Listar();
             }
-            else
+            catch
             {
-   Gasto nuevo = new Gasto();
-            nuevo.Descripcion = txtDescripcion.Text;
-            nuevo.Costo = int.Parse(txtMonto.Text);
-            nuevo.State = BusinessEntity.Estados.New;
-            gas.Save(nuevo);
-            string message = "Datos guardados";
-            string title = "Registro de gasto";
-            MessageBoxButtons buttons = MessageBoxButtons.OK;
-            DialogResult result = MessageBox.Show(message, title, buttons);
+                string message1 = "Datos Erroneos";
+                string title1 = "Registro de gasto";
+                MessageBoxButtons buttons1 = MessageBoxButtons.OK;
+                DialogResult result1 = MessageBox.Show(message1, title1, buttons1);
             }
-     
 
-         
+        }
 
+        private void dgvGastos_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+
+                var gasto = (Gasto)dgvGastos.Rows[e.RowIndex].DataBoundItem;
+
+
+
+                using (drususEntities db = new drususEntities())
+                {
+
+                    db.Entry(gasto).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+
+            }
+            catch { }
         }
     }
 }

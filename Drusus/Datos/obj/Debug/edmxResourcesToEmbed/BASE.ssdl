@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="drususModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="idCliente" />
+    </Key>
+    <Property Name="idCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+    <Property Name="apellido" Type="varchar" MaxLength="50" />
+    <Property Name="cuil" Type="varchar" MaxLength="50" />
+    <Property Name="direccion" Type="varchar(max)" />
+    <Property Name="sieteDias" Type="int" />
+    <Property Name="catorceDias" Type="int" />
+    <Property Name="veintiunDias" Type="int" />
+    <Property Name="masVentiunDias" Type="int" />
+    <Property Name="deudaUSS" Type="int" />
+  </EntityType>
+  <EntityType Name="Cobro">
+    <Key>
+      <PropertyRef Name="idCobro" />
+    </Key>
+    <Property Name="idCliente" Type="int" />
+    <Property Name="fecha" Type="date" />
+    <Property Name="descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="monto" Type="int" />
+    <Property Name="idCobro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Gasto">
+    <Key>
+      <PropertyRef Name="idGasto" />
+    </Key>
+    <Property Name="fecha" Type="datetime" />
+    <Property Name="descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="costo" Type="int" />
+    <Property Name="idGasto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sbasta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="monto" Type="int" />
+    <Property Name="descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="idCliente" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Venta">
+    <Key>
+      <PropertyRef Name="idVenta" />
+    </Key>
+    <Property Name="idCliente" Type="int" />
+    <Property Name="fecha" Type="datetime" />
+    <Property Name="descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="monto" Type="int" />
+    <Property Name="idVenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Cobro_Cliente">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+    <End Role="Cobro" Type="Self.Cobro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="Cobro">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Venta_Cliente">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="Venta">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="drususModelStoreContainer">
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cobro" EntityType="Self.Cobro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Gasto" EntityType="Self.Gasto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sbasta" EntityType="Self.sbasta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Venta" EntityType="Self.Venta" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Cobro_Cliente" Association="Self.FK_Cobro_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Cobro" EntitySet="Cobro" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Venta_Cliente" Association="Self.FK_Venta_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Venta" EntitySet="Venta" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,37 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Drusus.Formularios;
 using FontAwesome.Sharp;
+using System;
+using System.Drawing;
 using System.Runtime.InteropServices;
-using Drusus.Formularios;
-using Data.Database;
+using System.Windows.Forms;
+
 
 namespace Drusus
 {
     public partial class FormDrusus : Form
     {
+        public double DOLAR = 0;
         private IconButton currentBtn;
-        private Panel leftBorderBtn;
+        private readonly Panel leftBorderBtn;
         private Form currentChildForm;
         public FormDrusus()
         {
             InitializeComponent();
             ComprimirSubMenus();
-            leftBorderBtn = new Panel();
-            leftBorderBtn.Size = new Size(7, 60);
+            leftBorderBtn = new Panel
+            {
+                Size = new Size(7, 60)
+            };
             panelMenu.Controls.Add(leftBorderBtn);
             //formulario
             this.Text = string.Empty;
             this.ControlBox = false;
             this.DoubleBuffered = true;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
-            
+
         }
         private void ComprimirSubMenus()
         {
@@ -39,7 +36,7 @@ namespace Drusus
             panelCobros.Visible = false;
             panelVentas.Visible = false;
         }
-        private void ActivateButton(Object senderBtn,Color color)
+        private void ActivateButton(Object senderBtn, Color color)
         {
 
             if (senderBtn != null)
@@ -75,7 +72,7 @@ namespace Drusus
         }
         private void DisableButton()
         {
-            if (currentBtn!=null)
+            if (currentBtn != null)
             {
                 currentBtn.BackColor = Color.FromArgb(37, 36, 81);
                 currentBtn.ForeColor = Color.Gainsboro;
@@ -110,12 +107,15 @@ namespace Drusus
             childForm.Show();
             lblTitleChildForm.Text = childForm.Text;
         }
-            private void btnInicio_Click(object sender, EventArgs e)
+        private void btnInicio_Click(object sender, EventArgs e)
         {
             if (currentChildForm != null)
             {
                 currentChildForm.Close();
+
             }
+            ComprimirSubMenus();
+            OpenChildForm(new iniciofrm(DOLAR));
             ActivateButton(sender, RGBColors.color1);
         }
 
@@ -144,7 +144,14 @@ namespace Drusus
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             Reset();
-            currentChildForm.Close();
+            try
+            {
+                currentChildForm.Close();
+            }
+            catch (NullReferenceException)
+            {
+            }
+
         }
         private void Reset()
         {
@@ -191,7 +198,7 @@ namespace Drusus
         private void btnNuevoCobro_Click(object sender, EventArgs e)
         {
             ComprimirSubMenus();
-            OpenChildForm(new FormularioNuevoCobro());
+            OpenChildForm(new FormularioNuevoCobro(DOLAR));
         }
 
         private void btnNuevaVenta_Click(object sender, EventArgs e)
@@ -215,13 +222,13 @@ namespace Drusus
         private void btnFichaCliente_Click(object sender, EventArgs e)
         {
             ComprimirSubMenus();
-            OpenChildForm(new FormularioBuscarFicha());
+            OpenChildForm(new FormularioBuscarFicha(DOLAR));
         }
 
         private void btnListaClientes_Click(object sender, EventArgs e)
         {
             ComprimirSubMenus();
-            OpenChildForm(new FormularioListaClientes());
+            OpenChildForm(new EstadoClientes(DOLAR));
         }
 
         //Close-Maximize-Minimize
@@ -236,7 +243,7 @@ namespace Drusus
             else
                 WindowState = FormWindowState.Normal;
         }
-        private void btnMinimize_Click(object sender, EventArgs e)
+        private void BtnMinimize_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
         }
@@ -255,12 +262,14 @@ namespace Drusus
             OpenChildForm(new FormularioSubasta());
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void FormDrusus_Load(object sender, EventArgs e)
         {
-            VentaAdapter v = new VentaAdapter();
-            DateTime d = new DateTime(2020, 08, 01);
-            DateTime h = new DateTime(2020, 08, 30);
-             int monto = v.GetMontoDeClientePorFechaV(1, d, h);
+            busquedaValores();
+        }
+
+        private async void busquedaValores()
+        {
+            DOLAR = await Datos.Util.DolarAPI();
         }
     }
 }

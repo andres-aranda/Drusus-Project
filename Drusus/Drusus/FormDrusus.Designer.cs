@@ -449,7 +449,7 @@
             this.btnMinimize.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMinimize.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnMinimize.UseVisualStyleBackColor = true;
-            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
+            this.btnMinimize.Click += new System.EventHandler(this.BtnMinimize_Click);
             // 
             // btnMaximize
             // 
@@ -549,6 +549,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormDrusus";
             this.Text = "Panel Drusus";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FormDrusus_Load);
             this.panelMenu.ResumeLayout(false);
             this.panelCobros.ResumeLayout(false);
             this.panelVentas.ResumeLayout(false);

@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="drususModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="idCliente" />
+    </Key>
+    <Property Name="idCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cuil" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="sieteDias" Type="Int32" />
+    <Property Name="catorceDias" Type="Int32" />
+    <Property Name="veintiunDias" Type="Int32" />
+    <Property Name="masVentiunDias" Type="Int32" />
+    <Property Name="deudaUSS" Type="Int32" />
+    <NavigationProperty Name="Cobroes" Relationship="Self.FK_Cobro_Cliente" FromRole="Cliente" ToRole="Cobro" />
+    <NavigationProperty Name="Ventas" Relationship="Self.FK_Venta_Cliente" FromRole="Cliente" ToRole="Venta" />
+  </EntityType>
+  <EntityType Name="Cobro">
+    <Key>
+      <PropertyRef Name="idCobro" />
+    </Key>
+    <Property Name="idCliente" Type="Int32" />
+    <Property Name="fecha" Type="DateTime" Precision="0" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="monto" Type="Int32" />
+    <Property Name="idCobro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FK_Cobro_Cliente" FromRole="Cobro" ToRole="Cliente" />
+  </EntityType>
+  <EntityType Name="Gasto">
+    <Key>
+      <PropertyRef Name="idGasto" />
+    </Key>
+    <Property Name="fecha" Type="DateTime" Precision="3" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="costo" Type="Int32" />
+    <Property Name="idGasto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Venta">
+    <Key>
+      <PropertyRef Name="idVenta" />
+    </Key>
+    <Property Name="idCliente" Type="Int32" />
+    <Property Name="fecha" Type="DateTime" Precision="3" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="monto" Type="Int32" />
+    <Property Name="idVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FK_Venta_Cliente" FromRole="Venta" ToRole="Cliente" />
+  </EntityType>
+  <Association Name="FK_Cobro_Cliente">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+    <End Role="Cobro" Type="Self.Cobro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="Cobro">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Venta_Cliente">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="Venta">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="drususEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Clientes" EntityType="Self.Cliente" />
+    <EntitySet Name="Cobroes" EntityType="Self.Cobro" />
+    <EntitySet Name="Gastoes" EntityType="Self.Gasto" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Ventas" EntityType="Self.Venta" />
+    <AssociationSet Name="FK_Cobro_Cliente" Association="Self.FK_Cobro_Cliente">
+      <End Role="Cliente" EntitySet="Clientes" />
+      <End Role="Cobro" EntitySet="Cobroes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Venta_Cliente" Association="Self.FK_Venta_Cliente">
+      <End Role="Cliente" EntitySet="Clientes" />
+      <End Role="Venta" EntitySet="Ventas" />
+    </AssociationSet>
+    <EntitySet Name="sbasta" EntityType="drususModel.sbasta" />
+  </EntityContainer>
+  <EntityType Name="sbasta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="monto" Type="Int32" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="idCliente" Type="Int32" />
+  </EntityType>
+</Schema>

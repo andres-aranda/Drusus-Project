@@ -1,21 +1,15 @@
-﻿using System;
+﻿using Datos;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Business.Logic;
-using Business.Entities;
 
 namespace Drusus.Formularios
 {
     public partial class FormularioSubasta : Form
     {
-        ClienteLogic cli = new ClienteLogic();
-        VentaLogic ven = new VentaLogic();
+        List<Cliente> listaClientes;
         public FormularioSubasta()
         {
             InitializeComponent();
@@ -23,83 +17,244 @@ namespace Drusus.Formularios
             GenerarColumnas();
         }
 
-        int count = 0;
 
-        private void finalizar_Click(object sender, EventArgs e)
+
+        private void Finalizar_Click(object sender, EventArgs e)
         {
-          
-            foreach (DataGridViewRow fila in dgvSubasta.Rows)
+            DialogResult dialogResult = MessageBox.Show("Estas seguro que deseas finalizar la subasta?", "Finalizar subasta", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                if (fila.Cells["valor"].Value != null && fila.Cells["Cliente"].Value != null && fila.Cells["moneda"].Value != null)
+                DialogResult dialogResult2 = MessageBox.Show("Si finaliza la venta se computaran las ventas", "Desea continuar?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialogResult2 == DialogResult.Yes)
                 {
-                    Venta venta = new Venta();
-                    venta.Monto = Int32.Parse(fila.Cells["valor"].Value.ToString());
-                    venta.IdCliente = Int32.Parse(fila.Cells["Cliente"].Value.ToString());
-                    venta.Descripcion = fila.Cells["moneda"].Value.ToString() + lblTitulo.Text;
-                    venta.Fecha = DateTime.Today;
-                    venta.Id = 0;
-                    ven.Create(venta);
-                     btnFinalizar.Enabled = false;
+                    try
+                    {
+                        if (rbSubasta.Checked) { listaClientes = Util.ActualizarDeudas(); };
+
+
+                        foreach (DataGridViewRow fila in dgvSubasta.Rows)
+                        {
+                            if (fila.Cells["monto"].Value != null &&
+                                fila.Cells["cliente"].Value != null &&
+                                fila.Cells["descripcion"].Value != null)
+                            {
+                                Venta venta = new Venta
+                                {
+                                    monto = Int32.Parse(fila.Cells["monto"].Value.ToString()),
+                                    idCliente = Int32.Parse(fila.Cells["Cliente"].Value.ToString()),
+                                    descripcion = fila.Cells["descripcion"].Value.ToString() + lblTitulo.Text,
+                                    fecha = DateTime.Today.Date
+                                };
+
+                                using (drususEntities db = new drususEntities())
+                                {
+                                    //Registro cambio
+                                    db.Ventas.Add(venta);
+                                    Cliente cliente = db.Clientes.Find(venta.idCliente);
+                                    cliente.sieteDias += venta.monto;
+                                    db.Entry(cliente).State = EntityState.Modified;
+                                    //Persiste en base
+                                    db.SaveChanges();
+                                }
+                            }
+                        }
+                        btnFinalizar.Enabled = false;
+                    }
+                    catch
+                    {
+                        Util.MensajeError();
+                    }
                 }
-            string message = "Datos Guardados";
-            string title = "Subasta finalizada";
-            MessageBoxButtons buttons = MessageBoxButtons.OK;
-            DialogResult result = MessageBox.Show(message, title, buttons);
-          
+                else if (dialogResult2 == DialogResult.No)
+                {
+                    //do something else
+                }
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //do something else
             }
 
+
+        }
+        private void DataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            e.Cancel = true;
         }
         private void GenerarColumnas()
         {
+            if (dgvSubasta.Columns.Count == 3)
+                dgvSubasta.Columns.RemoveAt(2);
 
-            DataGridViewTextBoxColumn colMoneda = new DataGridViewTextBoxColumn();
-            colMoneda.Name = "moneda";
-            colMoneda.HeaderText = "Moneda";
-            colMoneda.DataPropertyName = "moneda";
+            DataGridViewComboBoxColumn colCliente = new DataGridViewComboBoxColumn
+            {
+                Name = "cliente"
+            };
 
-            DataGridViewComboBoxColumn colCliente = new DataGridViewComboBoxColumn();
-            colCliente.Name = "Cliente";
+
+            using (drususEntities db = new drususEntities())
+            {
+                dgvSubasta.DataSource = db.sbasta.ToList();
+            }
+            listaClientes = Util.ObtenerListaClientes();
+            colCliente.DataSource = listaClientes;
+
             colCliente.HeaderText = "Cliente";
-            colCliente.DataPropertyName = "Cliente";
+            colCliente.DataPropertyName = "idCliente";
             colCliente.DisplayIndex = 0;
-            colCliente.DataSource = cli.GetAll();
-            colCliente.ValueMember = "Id";
-            colCliente.DisplayMember = "ApellidoYNombre";
-            colCliente.DefaultCellStyle = dgvSubasta.DefaultCellStyle;
+            colCliente.AutoComplete = false;
+            colCliente.ValueMember = "idCliente";
+            colCliente.DisplayMember = "apellidoNombre";
 
-            DataGridViewTextBoxColumn colValor = new DataGridViewTextBoxColumn();
-            colValor.Name = "valor";
-            colValor.HeaderText = "Valor";
-            colValor.DataPropertyName = "valor";
-
-            this.dgvSubasta.Columns.Add(colMoneda);
             this.dgvSubasta.Columns.Add(colCliente);
-            this.dgvSubasta.Columns.Add(colValor);
+
 
         }
 
-        private void rbMia_CheckedChanged(object sender, EventArgs e)
+        private void RbMia_CheckedChanged(object sender, EventArgs e)
         {
             if (rbMia.Checked) { lblTitulo.Text = " Mia"; };
         }
 
-        private void rbSubasta_CheckedChanged(object sender, EventArgs e)
+        private void RbSubasta_CheckedChanged(object sender, EventArgs e)
         {
             if (rbSubasta.Checked) { lblTitulo.Text = " Subasta Drusus"; };
         }
 
-        private void btnSortear_Click(object sender, EventArgs e)
+        private void BtnSortear_Click(object sender, EventArgs e)
         {
-           if (dgvSubasta.Rows.Count > 1)
+            if (dgvSubasta.Rows.Count >= 1)
             {
-  Random rnd = new Random();
-            int idCliente =Int32.Parse(dgvSubasta.Rows[rnd.Next(dgvSubasta.Rows.Count)].Cells["Cliente"].Value.ToString());
-            Cliente cliente = cli.GetOne(idCliente);
-            lblGanador.Text = cliente.ApellidoYNombre;
+                Random rnd = new Random();
+                try
+                {
+                    var aux = dgvSubasta.Rows[rnd.Next(dgvSubasta.Rows.Count - 1)].Cells["cliente"].Value;
+
+                    int idGanador = int.Parse(aux.ToString());
+                    lblGanador.Text = listaClientes.Find(x => x.idCliente == idGanador).apellidoNombre;
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("No se encontro el cliente.");
+                }
+
             }
-          
+
         }
 
-     
+
+
+        private void Button1_Click_1(object sender, EventArgs e)
+        {
+
+
+            FormularioAgregarClientes agregador = new FormularioAgregarClientes();
+            agregador.ShowDialog();
+            GenerarColumnas();
+
+
+        }
+
+
+
+        private void DgvSubasta_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+
+                var moneda = (sbasta)dgvSubasta.Rows[e.RowIndex].DataBoundItem;
+
+                try
+                {
+                    if (dgvSubasta.Rows[e.RowIndex].Cells["cliente"].Value != null)
+                    {
+                        string aux = dgvSubasta.Rows[e.RowIndex].Cells["cliente"].Value.ToString();
+                        int idGanador = int.Parse(aux);
+                        // moneda.nombreCliente = listaClientes.Find(x => x.idCliente == idGanador).apellidoNombre;
+                        moneda.idCliente = idGanador;
+
+                    }
+
+                }
+                catch { }
+
+                using (drususEntities db = new drususEntities())
+                {
+
+                    db.Entry(moneda).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+
+            }
+            catch { }
+
+        }
+
+
+
+        private void MonedaTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void IconButton1_Click(object sender, EventArgs e)
+        {
+            if (dgvSubasta.SelectedRows.Count > 0)
+            {
+                var id = (sbasta)dgvSubasta.SelectedRows[0].DataBoundItem;
+
+                using (drususEntities db = new drususEntities())
+                {
+
+                    db.Entry(id).State = EntityState.Deleted;
+                    db.SaveChanges();
+                }
+                GenerarColumnas();
+            }
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            var aux = 7;
+            dgvSubasta.Rows[1].Cells["cliente"].Value = aux;
+        }
+
+        private void LimpiarButton_Click(object sender, EventArgs e)
+        {
+
+            using (drususEntities db = new drususEntities())
+            {
+                db.Database.ExecuteSqlCommand("TRUNCATE TABLE [sbasta]");
+            }
+            GenerarColumnas();
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            if (!(String.IsNullOrEmpty(MonedaTextBox.Text)))
+            {
+                try
+                {
+                    using (drususEntities db = new drususEntities())
+                    {
+                        sbasta moneda = new sbasta
+                        {
+                            descripcion = MonedaTextBox.Text
+                        };
+                        db.sbasta.Add(moneda);
+                        db.SaveChanges();
+                    }
+                    dgvSubasta.Refresh();
+                    GenerarColumnas();
+                    MonedaTextBox.Text = "";
+                }
+                catch { }
+            }
+        }
+
+       
     }
+
+
 }
+
