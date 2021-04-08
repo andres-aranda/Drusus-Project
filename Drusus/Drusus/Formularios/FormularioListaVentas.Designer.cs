@@ -105,6 +105,7 @@
             this.Controls.Add(this.dgvVentas);
             this.Name = "FormularioListaVentas";
             this.Text = "Lista de Ventas";
+            this.Load += new System.EventHandler(this.FormularioListaVentas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ventaBindingSource)).EndInit();
             this.ResumeLayout(false);

@@ -142,9 +142,19 @@ namespace Drusus.Formularios
 
             int deudaUSS = (int)(clientePagador.deudaUSS * precioDolar);
             int aux = 0;
-            aux = deudaUSS - montoPagado;
+            if (montoPagado >= 0)
+            {
+                aux = deudaUSS - montoPagado;
+            }
+            else
+            {
+                aux = deudaUSS + montoPagado;
+            }
+
+
             if (aux >= 0)
             {
+                aux = aux / precioDolar;
                 clientePagador.deudaUSS = aux;
                 return 0;
             }

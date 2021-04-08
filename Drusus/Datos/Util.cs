@@ -31,8 +31,8 @@ namespace Datos
                             case "Dolar Blue":
                                 {
                                     string aux = (string)item.casa.venta;
-                                    auxUSS = double.Parse(aux.Replace(',', '.'));
-                                   // auxUSS = double.Parse(aux.Substring(0, 3));
+                                    //auxUSS = double.Parse(aux.Replace(',', '.'));
+                                   auxUSS = double.Parse(aux.Substring(0, 3));
                                
                               
                                 }
@@ -101,6 +101,7 @@ namespace Datos
         }
         public static List<Cliente> ActualizarDeudas()
         {
+
             try
             {
                 using (drususEntities db = new drususEntities())

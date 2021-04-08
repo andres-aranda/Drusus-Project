@@ -18,7 +18,8 @@ namespace Drusus.Formularios
 
             using (drususEntities db = new drususEntities())
             {
-                dgvVentas.DataSource = db.Ventas.Include(v => v.Cliente)?.ToList();
+                dgvVentas.DataSource = db.Ventas.OrderByDescending(ven => ven.fecha).Include(v => v.Cliente)?.ToList();
+
 
             }
             colCliente.DataSource = Util.ObtenerListaClientes();
@@ -42,6 +43,11 @@ namespace Drusus.Formularios
         private void dgvVentas_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             e.Cancel = true;
+        }
+
+        private void FormularioListaVentas_Load(object sender, System.EventArgs e)
+        {
+
         }
     }
 }
