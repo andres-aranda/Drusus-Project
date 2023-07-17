@@ -16,6 +16,13 @@ namespace Drusus.Formularios
             this.dgvSubasta.AutoGenerateColumns = false;
             GenerarColumnas();
         }
+        public FormularioSubasta(double dolar)
+        {
+            InitializeComponent();
+            this.dgvSubasta.AutoGenerateColumns = false;
+            GenerarColumnas();
+            textboxDolar.Value = (decimal)dolar;
+        }
 
 
 
@@ -103,7 +110,7 @@ namespace Drusus.Formularios
                 colCliente.HeaderText = "Cliente";
                 colCliente.DataPropertyName = "idCliente";
                 colCliente.DisplayIndex = 0;
-                colCliente.AutoComplete = false;
+                colCliente.AutoComplete = true;
                 colCliente.ValueMember = "idCliente";
                 colCliente.DisplayMember = "apellidoNombre";
 
@@ -276,6 +283,22 @@ namespace Drusus.Formularios
         private void FormularioSubasta_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow fila in dgvSubasta.Rows)
+            {
+                if (fila.Cells["monto"].Value != null)
+                {
+                    int monto= Int32.Parse(fila.Cells["monto"].Value.ToString());
+                    int dolar = (int)textboxDolar.Value;
+
+                    fila.Cells["monto"].Value = monto * dolar;
+
+                }
+            }
+            
         }
     }
 

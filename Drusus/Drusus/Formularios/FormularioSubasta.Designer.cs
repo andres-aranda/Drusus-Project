@@ -29,14 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.lblGanador = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.btnSortear = new System.Windows.Forms.Button();
             this.btnFinalizar = new System.Windows.Forms.Button();
             this.dgvSubasta = new System.Windows.Forms.DataGridView();
+            this.Nro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sbastaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.rbSubasta = new System.Windows.Forms.RadioButton();
             this.rbMia = new System.Windows.Forms.RadioButton();
@@ -49,12 +52,13 @@
             this.totalButton = new System.Windows.Forms.Button();
             this.totalLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.Nro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textboxDolar = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubasta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sbastaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textboxDolar)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitulo
@@ -63,7 +67,7 @@
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.Color.White;
-            this.lblTitulo.Location = new System.Drawing.Point(736, 103);
+            this.lblTitulo.Location = new System.Drawing.Point(927, 103);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(154, 25);
             this.lblTitulo.TabIndex = 29;
@@ -75,7 +79,7 @@
             this.lblGanador.AutoSize = true;
             this.lblGanador.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGanador.ForeColor = System.Drawing.Color.White;
-            this.lblGanador.Location = new System.Drawing.Point(193, 434);
+            this.lblGanador.Location = new System.Drawing.Point(193, 503);
             this.lblGanador.Name = "lblGanador";
             this.lblGanador.Size = new System.Drawing.Size(41, 37);
             this.lblGanador.TabIndex = 30;
@@ -86,7 +90,7 @@
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label13.AutoSize = true;
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(128, 444);
+            this.label13.Location = new System.Drawing.Point(128, 513);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(48, 13);
             this.label13.TabIndex = 31;
@@ -98,7 +102,7 @@
             this.btnSortear.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnSortear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSortear.ForeColor = System.Drawing.Color.White;
-            this.btnSortear.Location = new System.Drawing.Point(29, 439);
+            this.btnSortear.Location = new System.Drawing.Point(29, 508);
             this.btnSortear.Name = "btnSortear";
             this.btnSortear.Size = new System.Drawing.Size(75, 23);
             this.btnSortear.TabIndex = 32;
@@ -112,7 +116,7 @@
             this.btnFinalizar.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnFinalizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFinalizar.ForeColor = System.Drawing.Color.White;
-            this.btnFinalizar.Location = new System.Drawing.Point(741, 321);
+            this.btnFinalizar.Location = new System.Drawing.Point(932, 321);
             this.btnFinalizar.Name = "btnFinalizar";
             this.btnFinalizar.Size = new System.Drawing.Size(150, 23);
             this.btnFinalizar.TabIndex = 34;
@@ -135,14 +139,14 @@
             this.dgvSubasta.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvSubasta.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.dgvSubasta.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Zilla Slab", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSubasta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSubasta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvSubasta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSubasta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Nro,
@@ -155,15 +159,37 @@
             this.dgvSubasta.Name = "dgvSubasta";
             this.dgvSubasta.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvSubasta.RowHeadersWidth = 70;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(35)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            this.dgvSubasta.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvSubasta.Size = new System.Drawing.Size(665, 345);
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(35)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            this.dgvSubasta.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvSubasta.Size = new System.Drawing.Size(856, 414);
             this.dgvSubasta.TabIndex = 116;
             this.dgvSubasta.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSubasta_CellContentClick);
             this.dgvSubasta.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvSubasta_CellValueChanged);
             this.dgvSubasta.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.DataGridView1_DataError);
+            // 
+            // Nro
+            // 
+            this.Nro.DataPropertyName = "id";
+            this.Nro.FillWeight = 45.68528F;
+            this.Nro.HeaderText = "Nro";
+            this.Nro.Name = "Nro";
+            this.Nro.ReadOnly = true;
+            // 
+            // monto
+            // 
+            this.monto.DataPropertyName = "monto";
+            this.monto.FillWeight = 127.1574F;
+            this.monto.HeaderText = "monto";
+            this.monto.Name = "monto";
+            // 
+            // descripcion
+            // 
+            this.descripcion.DataPropertyName = "descripcion";
+            this.descripcion.FillWeight = 127.1574F;
+            this.descripcion.HeaderText = "descripcion";
+            this.descripcion.Name = "descripcion";
             // 
             // sbastaBindingSource
             // 
@@ -175,7 +201,7 @@
             this.rbSubasta.AutoSize = true;
             this.rbSubasta.Checked = true;
             this.rbSubasta.ForeColor = System.Drawing.Color.White;
-            this.rbSubasta.Location = new System.Drawing.Point(545, 30);
+            this.rbSubasta.Location = new System.Drawing.Point(736, 30);
             this.rbSubasta.Name = "rbSubasta";
             this.rbSubasta.Size = new System.Drawing.Size(64, 17);
             this.rbSubasta.TabIndex = 117;
@@ -189,7 +215,7 @@
             this.rbMia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rbMia.AutoSize = true;
             this.rbMia.ForeColor = System.Drawing.Color.White;
-            this.rbMia.Location = new System.Drawing.Point(653, 30);
+            this.rbMia.Location = new System.Drawing.Point(844, 30);
             this.rbMia.Name = "rbMia";
             this.rbMia.Size = new System.Drawing.Size(42, 17);
             this.rbMia.TabIndex = 118;
@@ -209,7 +235,7 @@
             // 
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.Image = global::Drusus.Properties.Resources.grifo;
-            this.pictureBox2.Location = new System.Drawing.Point(741, 150);
+            this.pictureBox2.Location = new System.Drawing.Point(932, 150);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(150, 150);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -227,7 +253,7 @@
             this.btnClientes.IconColor = System.Drawing.Color.Gainsboro;
             this.btnClientes.IconSize = 35;
             this.btnClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClientes.Location = new System.Drawing.Point(736, 30);
+            this.btnClientes.Location = new System.Drawing.Point(927, 32);
             this.btnClientes.Name = "btnClientes";
             this.btnClientes.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnClientes.Rotation = 0D;
@@ -250,7 +276,7 @@
             this.iconButton1.IconColor = System.Drawing.Color.Gainsboro;
             this.iconButton1.IconSize = 20;
             this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton1.Location = new System.Drawing.Point(415, 21);
+            this.iconButton1.Location = new System.Drawing.Point(606, 21);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.iconButton1.Rotation = 0D;
@@ -268,7 +294,7 @@
             this.limpiarButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.limpiarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.limpiarButton.ForeColor = System.Drawing.Color.White;
-            this.limpiarButton.Location = new System.Drawing.Point(741, 350);
+            this.limpiarButton.Location = new System.Drawing.Point(932, 350);
             this.limpiarButton.Name = "limpiarButton";
             this.limpiarButton.Size = new System.Drawing.Size(150, 23);
             this.limpiarButton.TabIndex = 125;
@@ -295,7 +321,7 @@
             this.totalButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.totalButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.totalButton.ForeColor = System.Drawing.Color.White;
-            this.totalButton.Location = new System.Drawing.Point(740, 439);
+            this.totalButton.Location = new System.Drawing.Point(931, 439);
             this.totalButton.Name = "totalButton";
             this.totalButton.Size = new System.Drawing.Size(150, 23);
             this.totalButton.TabIndex = 128;
@@ -309,7 +335,7 @@
             this.totalLabel.AutoSize = true;
             this.totalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.totalLabel.ForeColor = System.Drawing.Color.White;
-            this.totalLabel.Location = new System.Drawing.Point(744, 400);
+            this.totalLabel.Location = new System.Drawing.Point(935, 400);
             this.totalLabel.Name = "totalLabel";
             this.totalLabel.Size = new System.Drawing.Size(19, 25);
             this.totalLabel.TabIndex = 129;
@@ -321,40 +347,59 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(738, 382);
+            this.label2.Location = new System.Drawing.Point(929, 382);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 15);
             this.label2.TabIndex = 130;
             this.label2.Text = " Total";
             // 
-            // Nro
+            // button1
             // 
-            this.Nro.DataPropertyName = "id";
-            this.Nro.FillWeight = 45.68528F;
-            this.Nro.HeaderText = "Nro";
-            this.Nro.Name = "Nro";
-            this.Nro.ReadOnly = true;
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(931, 506);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(150, 23);
+            this.button1.TabIndex = 131;
+            this.button1.Text = "Pesificar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // monto
+            // textboxDolar
             // 
-            this.monto.DataPropertyName = "monto";
-            this.monto.FillWeight = 127.1574F;
-            this.monto.HeaderText = "monto";
-            this.monto.Name = "monto";
+            this.textboxDolar.Location = new System.Drawing.Point(1018, 477);
+            this.textboxDolar.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.textboxDolar.Name = "textboxDolar";
+            this.textboxDolar.Size = new System.Drawing.Size(63, 20);
+            this.textboxDolar.TabIndex = 133;
             // 
-            // descripcion
+            // label1
             // 
-            this.descripcion.DataPropertyName = "descripcion";
-            this.descripcion.FillWeight = 127.1574F;
-            this.descripcion.HeaderText = "descripcion";
-            this.descripcion.Name = "descripcion";
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(931, 479);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(75, 15);
+            this.label1.TabIndex = 134;
+            this.label1.Text = "Precio Dolar";
             // 
             // FormularioSubasta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
-            this.ClientSize = new System.Drawing.Size(946, 486);
+            this.ClientSize = new System.Drawing.Size(1137, 555);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textboxDolar);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.totalLabel);
             this.Controls.Add(this.totalButton);
@@ -378,6 +423,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubasta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sbastaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textboxDolar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -405,5 +451,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nro;
         private System.Windows.Forms.DataGridViewTextBoxColumn monto;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.NumericUpDown textboxDolar;
+        private System.Windows.Forms.Label label1;
     }
 }

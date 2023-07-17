@@ -259,7 +259,7 @@ namespace Drusus
         private void iconButton1_Click(object sender, EventArgs e)
         {
             ComprimirSubMenus();
-            OpenChildForm(new FormularioSubasta());
+            OpenChildForm(new FormularioSubasta(DOLAR));
         }
 
         private void FormDrusus_Load(object sender, EventArgs e)
