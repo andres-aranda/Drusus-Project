@@ -12,3 +12,17 @@ C:\Users\andre\Desktop\Drusus-Project-master\Drusus\Datos\obj\Release\Datos.cspr
 C:\Users\andre\Desktop\Drusus-Project-master\Drusus\Datos\obj\Release\Datos.dll
 C:\Users\andre\Desktop\Drusus-Project-master\Drusus\Datos\obj\Release\Datos.pdb
 C:\Users\andre\Desktop\Drusus-Project-master\Drusus\Datos\obj\Release\Datos.csprojAssemblyReference.cache
+C:\Users\andre\Drusus-Project\Drusus\Datos\bin\Release\Datos.dll.config
+C:\Users\andre\Drusus-Project\Drusus\Datos\bin\Release\Datos.dll
+C:\Users\andre\Drusus-Project\Drusus\Datos\bin\Release\Datos.pdb
+C:\Users\andre\Drusus-Project\Drusus\Datos\bin\Release\EntityFramework.dll
+C:\Users\andre\Drusus-Project\Drusus\Datos\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\andre\Drusus-Project\Drusus\Datos\bin\Release\Newtonsoft.Json.dll
+C:\Users\andre\Drusus-Project\Drusus\Datos\bin\Release\EntityFramework.xml
+C:\Users\andre\Drusus-Project\Drusus\Datos\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\andre\Drusus-Project\Drusus\Datos\bin\Release\Newtonsoft.Json.xml
+C:\Users\andre\Drusus-Project\Drusus\Datos\obj\Release\Datos.csproj.AssemblyReference.cache
+C:\Users\andre\Drusus-Project\Drusus\Datos\obj\Release\Datos.csproj.CoreCompileInputs.cache
+C:\Users\andre\Drusus-Project\Drusus\Datos\obj\Release\Datos.csproj.CopyComplete
+C:\Users\andre\Drusus-Project\Drusus\Datos\obj\Release\Datos.dll
+C:\Users\andre\Drusus-Project\Drusus\Datos\obj\Release\Datos.pdb
