@@ -101,7 +101,7 @@ namespace Drusus.Formularios
 
 			DataGridViewComboBoxColumn colCliente = new DataGridViewComboBoxColumn
 			{
-				Name = "Cliente"
+				Name = "Cliente",
 			};
 
 
@@ -329,20 +329,6 @@ namespace Drusus.Formularios
 		}
 
 
-
-		private List<string> SplitTextIntoChunks(string text, int chunkSize)
-		{
-			List<string> chunks = new List<string>();
-			int length = text.Length;
-
-			for (int i = 0; i < length; i += chunkSize)
-			{
-				// Agregar un segmento truncado a la lista
-				chunks.Add(text.Substring(i, Math.Min(chunkSize, length - i)));
-			}
-
-			return chunks;
-		}
 		private List<string> GetLinesFromWordDocument(string filePath)
 		{
 			List<string> lines = new List<string>();
@@ -359,8 +345,8 @@ namespace Drusus.Formularios
 					string text = para.InnerText.Trim();
 					if (!string.IsNullOrWhiteSpace(text))
 					{
-						// Truncar líneas a 45 caracteres
-						lines.AddRange(SplitTextIntoChunks(text, 45));
+						var cadena = text.Length > 45 ? text.Substring(0, 45) : text;
+						lines.Add(cadena);
 					}
 				}
 			}

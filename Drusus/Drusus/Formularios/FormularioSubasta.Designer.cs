@@ -29,15 +29,17 @@
         private void InitializeComponent()
         {
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.lblTitulo = new System.Windows.Forms.Label();
 			this.lblGanador = new System.Windows.Forms.Label();
 			this.label13 = new System.Windows.Forms.Label();
 			this.btnSortear = new System.Windows.Forms.Button();
 			this.btnFinalizar = new System.Windows.Forms.Button();
 			this.dgvSubasta = new System.Windows.Forms.DataGridView();
-			this.Nro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.sbastaBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.rbSubasta = new System.Windows.Forms.RadioButton();
 			this.rbMia = new System.Windows.Forms.RadioButton();
 			this.MonedaTextBox = new System.Windows.Forms.TextBox();
@@ -53,13 +55,13 @@
 			this.iconButton1 = new FontAwesome.Sharp.IconButton();
 			this.btnClientes = new FontAwesome.Sharp.IconButton();
 			this.pictureBox2 = new System.Windows.Forms.PictureBox();
+			this.Nro = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.sbastaBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			((System.ComponentModel.ISupportInitialize)(this.dgvSubasta)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.sbastaBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.textboxDolar)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.sbastaBindingSource)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// lblTitulo
@@ -140,43 +142,55 @@
 			this.dgvSubasta.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.dgvSubasta.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
 			this.dgvSubasta.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
-			dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgvSubasta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+			dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+			dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgvSubasta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
 			this.dgvSubasta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvSubasta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Nro,
             this.monto,
             this.descripcion});
 			this.dgvSubasta.DataSource = this.sbastaBindingSource;
+			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+			dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+			dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.dgvSubasta.DefaultCellStyle = dataGridViewCellStyle6;
 			this.dgvSubasta.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
 			this.dgvSubasta.Location = new System.Drawing.Point(29, 69);
 			this.dgvSubasta.MultiSelect = false;
 			this.dgvSubasta.Name = "dgvSubasta";
 			this.dgvSubasta.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgvSubasta.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
 			this.dgvSubasta.RowHeadersWidth = 70;
-			dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(35)))), ((int)(((byte)(80)))));
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-			this.dgvSubasta.RowsDefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(35)))), ((int)(((byte)(80)))));
+			dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+			this.dgvSubasta.RowsDefaultCellStyle = dataGridViewCellStyle8;
 			this.dgvSubasta.Size = new System.Drawing.Size(856, 414);
 			this.dgvSubasta.TabIndex = 116;
 			this.dgvSubasta.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSubasta_CellContentClick);
 			this.dgvSubasta.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvSubasta_CellValueChanged);
 			this.dgvSubasta.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.DataGridView1_DataError);
 			// 
-			// Nro
+			// sbastaBindingSource
 			// 
-			this.Nro.DataPropertyName = "id";
-			this.Nro.FillWeight = 45.68528F;
-			this.Nro.HeaderText = "Nro";
-			this.Nro.Name = "Nro";
-			this.Nro.ReadOnly = true;
+			this.sbastaBindingSource.DataSource = typeof(Datos.sbasta);
 			// 
 			// rbSubasta
 			// 
@@ -224,7 +238,7 @@
 			this.limpiarButton.Name = "limpiarButton";
 			this.limpiarButton.Size = new System.Drawing.Size(150, 23);
 			this.limpiarButton.TabIndex = 125;
-			this.limpiarButton.Text = "Limpar datos";
+			this.limpiarButton.Text = "Limpiar datos";
 			this.limpiarButton.UseVisualStyleBackColor = true;
 			this.limpiarButton.Click += new System.EventHandler(this.LimpiarButton_Click);
 			// 
@@ -342,10 +356,10 @@
 			this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.iconButton1.IconSize = 20;
 			this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.iconButton1.Location = new System.Drawing.Point(606, 21);
+			this.iconButton1.Location = new System.Drawing.Point(566, 21);
 			this.iconButton1.Name = "iconButton1";
 			this.iconButton1.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-			this.iconButton1.Size = new System.Drawing.Size(109, 41);
+			this.iconButton1.Size = new System.Drawing.Size(149, 41);
 			this.iconButton1.TabIndex = 124;
 			this.iconButton1.Text = "Eliminar";
 			this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -386,23 +400,27 @@
 			this.pictureBox2.TabIndex = 33;
 			this.pictureBox2.TabStop = false;
 			// 
+			// Nro
+			// 
+			this.Nro.DataPropertyName = "id";
+			this.Nro.FillWeight = 45.68528F;
+			this.Nro.HeaderText = "Nro";
+			this.Nro.Name = "Nro";
+			this.Nro.ReadOnly = true;
+			// 
 			// monto
 			// 
 			this.monto.DataPropertyName = "monto";
 			this.monto.FillWeight = 127.1574F;
-			this.monto.HeaderText = "monto";
+			this.monto.HeaderText = "Monto";
 			this.monto.Name = "monto";
 			// 
 			// descripcion
 			// 
 			this.descripcion.DataPropertyName = "descripcion";
 			this.descripcion.FillWeight = 127.1574F;
-			this.descripcion.HeaderText = "descripcion";
+			this.descripcion.HeaderText = "Descripcion";
 			this.descripcion.Name = "descripcion";
-			// 
-			// sbastaBindingSource
-			// 
-			this.sbastaBindingSource.DataSource = typeof(Datos.sbasta);
 			// 
 			// FormularioSubasta
 			// 
@@ -435,9 +453,9 @@
 			this.Text = "Subasta / Mia";
 			this.Load += new System.EventHandler(this.FormularioSubasta_Load);
 			((System.ComponentModel.ISupportInitialize)(this.dgvSubasta)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.sbastaBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.textboxDolar)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.sbastaBindingSource)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -462,12 +480,12 @@
         private System.Windows.Forms.Button totalButton;
         private System.Windows.Forms.Label totalLabel;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn monto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.NumericUpDown textboxDolar;
         private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Button button3;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Nro;
+		private System.Windows.Forms.DataGridViewTextBoxColumn monto;
+		private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
 	}
 }
