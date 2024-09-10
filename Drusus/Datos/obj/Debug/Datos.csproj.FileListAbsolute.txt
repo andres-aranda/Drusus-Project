@@ -25,3 +25,17 @@ C:\Users\andre\Drusus-Project\Drusus\Datos\obj\Debug\Datos.csproj.CoreCompileInp
 C:\Users\andre\Drusus-Project\Drusus\Datos\obj\Debug\Datos.csproj.CopyComplete
 C:\Users\andre\Drusus-Project\Drusus\Datos\obj\Debug\Datos.dll
 C:\Users\andre\Drusus-Project\Drusus\Datos\obj\Debug\Datos.pdb
+C:\Users\andre\OneDrive\Escritorio\Nueva carpeta\Drusus-Project\Drusus\Datos\bin\Debug\Datos.dll.config
+C:\Users\andre\OneDrive\Escritorio\Nueva carpeta\Drusus-Project\Drusus\Datos\bin\Debug\Datos.dll
+C:\Users\andre\OneDrive\Escritorio\Nueva carpeta\Drusus-Project\Drusus\Datos\bin\Debug\Datos.pdb
+C:\Users\andre\OneDrive\Escritorio\Nueva carpeta\Drusus-Project\Drusus\Datos\bin\Debug\EntityFramework.dll
+C:\Users\andre\OneDrive\Escritorio\Nueva carpeta\Drusus-Project\Drusus\Datos\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\andre\OneDrive\Escritorio\Nueva carpeta\Drusus-Project\Drusus\Datos\bin\Debug\Newtonsoft.Json.dll
+C:\Users\andre\OneDrive\Escritorio\Nueva carpeta\Drusus-Project\Drusus\Datos\bin\Debug\EntityFramework.xml
+C:\Users\andre\OneDrive\Escritorio\Nueva carpeta\Drusus-Project\Drusus\Datos\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\andre\OneDrive\Escritorio\Nueva carpeta\Drusus-Project\Drusus\Datos\bin\Debug\Newtonsoft.Json.xml
+C:\Users\andre\OneDrive\Escritorio\Nueva carpeta\Drusus-Project\Drusus\Datos\obj\Debug\Datos.csproj.AssemblyReference.cache
+C:\Users\andre\OneDrive\Escritorio\Nueva carpeta\Drusus-Project\Drusus\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
+C:\Users\andre\OneDrive\Escritorio\Nueva carpeta\Drusus-Project\Drusus\Datos\obj\Debug\Datos.csproj.Up2Date
+C:\Users\andre\OneDrive\Escritorio\Nueva carpeta\Drusus-Project\Drusus\Datos\obj\Debug\Datos.dll
+C:\Users\andre\OneDrive\Escritorio\Nueva carpeta\Drusus-Project\Drusus\Datos\obj\Debug\Datos.pdb

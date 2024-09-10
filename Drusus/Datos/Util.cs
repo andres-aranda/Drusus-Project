@@ -1,10 +1,12 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -51,28 +53,31 @@ namespace Datos
         public static async Task<double> DolarAPI()
         {
             double valorDolar = 0;
-            var url = $"https://www.dolarsi.com/api/api.php?type=valoresprincipales";
-            var request = (HttpWebRequest)WebRequest.Create(url);
-            request.Method = "GET";
-            request.ContentType = "application/json";
-            request.Accept = "application/json";
+			
+            string url = "https://dolarapi.com/v1/dolares/blue";
 
-            try
-            {
-                using (Task<WebResponse> response = request.GetResponseAsync())
-                {
-                    await response.ContinueWith(
-                        t => valorDolar = Promise(t.Result));
+			using (HttpClient client = new HttpClient())
+			{
+				try
+				{
+					HttpResponseMessage response = await client.GetAsync(url);
+					response.EnsureSuccessStatusCode();
 
-                }
-                return valorDolar;
-            }
-            catch (WebException)
-            {
-                return valorDolar;
-            }
+					string responseBody = await response.Content.ReadAsStringAsync();
 
-        }
+					// Deserializar el JSON y obtener el valor de "venta"
+					JObject jsonResponse = JObject.Parse(responseBody);
+					 valorDolar = jsonResponse["venta"].Value<double>();
+
+					return valorDolar;
+				}
+				catch (HttpRequestException e)
+				{
+                    return valorDolar;
+				}
+			}
+
+		}
         public static List<Cliente> ObtenerListaClientes()
         {
             List<Cliente> clientes = new List<Cliente>();
