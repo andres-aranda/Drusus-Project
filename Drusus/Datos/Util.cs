@@ -102,7 +102,7 @@ namespace Datos
         }
         public static void MensajeError()
         {
-            MessageBox.Show("Ha ocurrido un error intentelo mas tarde");
+            MessageBox.Show("Ha ocurrido un error intentelo mas tarde. ");
         }
         public static List<Cliente> ActualizarDeudas()
         {

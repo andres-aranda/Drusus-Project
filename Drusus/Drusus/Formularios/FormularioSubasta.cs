@@ -9,6 +9,7 @@ using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
+using System.Data.Entity.Validation;
 
 namespace Drusus.Formularios
 {
@@ -58,7 +59,7 @@ namespace Drusus.Formularios
 										{
 											monto = Int32.Parse(fila.Cells["monto"].Value.ToString()),
 											idCliente = Int32.Parse(fila.Cells["cliente"].Value.ToString()),
-											descripcion = fila.Cells["descripcion"].Value.ToString() + lblTitulo.Text,
+											descripcion = fila.Cells["descripcion"].Value.ToString() ,
 											fecha = DateTime.Today.Date
 										};
 
@@ -80,6 +81,23 @@ namespace Drusus.Formularios
 
 							catch (Exception ex)
 							{
+								if (ex is DbEntityValidationException validationException)
+								{
+									string errorMessage = "Error de validación de entidad:";
+									foreach (var validationErrors in validationException.EntityValidationErrors)
+									{
+										foreach (var validationError in validationErrors.ValidationErrors)
+										{
+											errorMessage += $"\n- {validationError.PropertyName}: {validationError.ErrorMessage}";
+										}
+									}
+									MessageBox.Show(errorMessage, "Error de Entity Framework", MessageBoxButtons.OK, MessageBoxIcon.Error);
+								}
+								// Capturar excepción genérica
+								else
+								{
+									MessageBox.Show("Se produjo un error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+								}
 								dbContextTransaction.Rollback();
 								Util.MensajeError();
 							}
