@@ -1,4 +1,4 @@
-﻿using Datos;
+using Datos;
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -16,11 +16,12 @@ namespace Drusus.Formularios
         {
             InitializeComponent();
             precioUSS = DOLAR;
+            ThemeHelper.StyleForm(this);
         }
 
         private void iniciofrm_Load(object sender, EventArgs e)
         {
-            dolarlabel.Text = precioUSS.ToString();
+            dolarlabel.Text = string.Format("$ {0:N0}", precioUSS);
             using (drususEntities db = new drususEntities())
             {
                 pendientes = (int?)db.Clientes.Sum(cli => cli.sieteDias + cli.catorceDias + cli.veintiunDias + cli.masVentiunDias);
@@ -31,10 +32,13 @@ namespace Drusus.Formularios
 
             if (gastos == null) { gastos = 0; }
             if (pendientes == null) { pendientes = 0; }
-            lbltotal.Text = (pendientes + (pendientesUSS * precioUSS)).ToString();
-            lblGasto.Text = gastos.ToString();
-            totalUSS.Text = (pendientesUSS * precioUSS).ToString();
-            totalPesos.Text = pendientes.ToString();
+            if (pendientesUSS == null) { pendientesUSS = 0; }
+
+            double totalConsolidado = (double)pendientes + ((double)pendientesUSS * (precioUSS ?? 0));
+            lbltotal.Text = string.Format("$ {0:N0}", totalConsolidado);
+            lblGasto.Text = string.Format("$ {0:N0}", gastos);
+            totalUSS.Text = string.Format("US$ {0:N0} (≈ $ {1:N0})", pendientesUSS, (double)pendientesUSS * (precioUSS ?? 0));
+            totalPesos.Text = string.Format("$ {0:N0}", pendientes);
         }
 
 

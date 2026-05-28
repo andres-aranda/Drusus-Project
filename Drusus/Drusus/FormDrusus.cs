@@ -1,4 +1,4 @@
-﻿using Drusus.Formularios;
+using Drusus.Formularios;
 using FontAwesome.Sharp;
 using System;
 using System.Drawing;
@@ -29,6 +29,8 @@ namespace Drusus
             this.DoubleBuffered = true;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
 
+            // Aplicar Estilo Visual Premium
+            ThemeHelper.StyleForm(this);
         }
         private void ComprimirSubMenus()
         {

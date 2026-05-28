@@ -1,4 +1,4 @@
-﻿using Datos;
+using Datos;
 using System;
 using System.Data.Entity;
 using System.Drawing;
@@ -21,7 +21,7 @@ namespace Drusus.Formularios
             InitializeComponent();
             buscarDatos();
             valorDOLAR = DOLAR;
-
+            ThemeHelper.StyleForm(this);
         }
         private void buscarDatos()
         {
@@ -41,14 +41,25 @@ namespace Drusus.Formularios
             dolarlabel.Text = valorDOLAR.ToString();
             foreach (DataGridViewRow row in clientesdataGridView.Rows)
             {
-                var aux = (int)row.Cells["deudaUSS"].Value;
+                if (row.IsNewRow) continue;
+
+                var cellValue = row.Cells["deudaUSS"].Value;
+                int aux = 0;
+                if (cellValue != null && cellValue != DBNull.Value)
+                {
+                    try { aux = Convert.ToInt32(cellValue); } catch { }
+                }
                 row.Cells["ussPesos"].Value = aux * valorDOLAR;
-                switch (row.Cells["direccion"].Value)
+
+                var dirValue = row.Cells["direccion"].Value;
+                string dirStr = dirValue != null && dirValue != DBNull.Value ? dirValue.ToString() : string.Empty;
+
+                switch (dirStr)
                 {
                     case "Este cliente es deudor":
                         {
                             row.DefaultCellStyle.BackColor = Color.Red;
-
+                            row.DefaultCellStyle.ForeColor = Color.White;
                         }
                         break;
                     case "Este cliente fue eliminado":
@@ -58,7 +69,6 @@ namespace Drusus.Formularios
                         }
                         break;
                     default:
-                        // row.DefaultCellStyle.BackColor = Color.Blue;
                         break;
                 }
             }

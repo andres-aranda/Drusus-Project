@@ -1,4 +1,4 @@
-﻿
+
 using Datos;
 using System;
 using System.Drawing;
@@ -19,11 +19,13 @@ namespace Drusus.Formularios
             precioDolar = (int)DOLAR;
 
             buscarDatos();
+            ThemeHelper.StyleForm(this);
         }
         public FormularioNuevoCobro(Cliente clienteEnviado, double DOLAR)
         {
             InitializeComponent();
             calendario.Value = DateTime.Now;
+            precioDolar = (int)DOLAR;
             buscarDatos();
 
             clientePagador = clienteEnviado;
@@ -31,6 +33,7 @@ namespace Drusus.Formularios
             cmbCliente.Visible = false;
             clienteLabel.Text = clienteEnviado.apellidoNombre;
             clienteLabel.Visible = true;
+            ThemeHelper.StyleForm(this);
         }
 
 
@@ -38,19 +41,38 @@ namespace Drusus.Formularios
 
         private void btnCobrar_Click(object sender, EventArgs e)
         {
+            if (clientePagador == null || string.IsNullOrEmpty(clientePagador.apellido))
+            {
+                MessageBox.Show("Por favor, seleccione un cliente de la lista.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!int.TryParse(txtMonto.Text, out int parsedMonto) || parsedMonto <= 0)
+            {
+                MessageBox.Show("Por favor, ingrese un monto entero positivo válido.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int customDolar = precioDolar;
+            if (dolaresCheckBox.Checked)
+            {
+                if (!int.TryParse(dolarTextBox.Text, out customDolar) || customDolar <= 0)
+                {
+                    MessageBox.Show("Por favor, ingrese un valor de dólar positivo válido.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+
             try
             {
-                monto = int.Parse(txtMonto.Text);
+                monto = parsedMonto;
                 if (pagaEnDolarescheckBox.Checked)
                 {
-                    monto = monto * precioDolar;
+                    monto = monto * customDolar;
                 }
 
                 if (dolaresCheckBox.Checked)
                 {
-
-                    int precioDolar = int.Parse(dolarTextBox.Text);
-
                     if (primeroDolarisCheckBox.Checked)
                     {
                         int resto = pagoDeudaUSS(monto);
@@ -58,7 +80,6 @@ namespace Drusus.Formularios
                         {
                             cancelarDeuda(resto, false);
                         }
-
                     }
                     else
                     {
@@ -80,8 +101,6 @@ namespace Drusus.Formularios
             {
                 Util.MensajeError();
             }
-
-
         }
 
         private void cmbCliente_SelectionChangeCommitted(object sender, EventArgs e)

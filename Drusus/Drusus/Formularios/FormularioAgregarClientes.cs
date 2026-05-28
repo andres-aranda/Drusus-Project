@@ -1,4 +1,4 @@
-﻿
+
 using Datos;
 using System;
 using System.Windows.Forms;
@@ -11,16 +11,22 @@ namespace Drusus.Formularios
         public FormularioAgregarClientes()
         {
             InitializeComponent();
+            ThemeHelper.StyleForm(this);
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtApellido.Text))
+            {
+                MessageBox.Show("Por favor, complete el nombre y el apellido del cliente.", "Campos Requeridos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             Cliente nuevo = new Cliente();
-            try { nuevo.nombre = txtNombre.Text; } catch { nuevo.nombre = null; }
-            try { nuevo.apellido = txtApellido.Text; } catch { nuevo.apellido = null; }
-            try { nuevo.direccion = txtDireccion.Text; } catch { nuevo.direccion = null; }
-            try { nuevo.cuil = txtCuit.Text; } catch { nuevo.cuil = null; }
+            try { nuevo.nombre = txtNombre.Text.Trim(); } catch { nuevo.nombre = null; }
+            try { nuevo.apellido = txtApellido.Text.Trim(); } catch { nuevo.apellido = null; }
+            try { nuevo.direccion = txtDireccion.Text.Trim(); } catch { nuevo.direccion = null; }
+            try { nuevo.cuil = txtCuit.Text.Trim(); } catch { nuevo.cuil = null; }
             nuevo.sieteDias = 0;
             nuevo.catorceDias = 0;
             nuevo.veintiunDias = 0;

@@ -1,4 +1,4 @@
-﻿using Datos;
+using Datos;
 using System;
 using System.Data.Entity;
 using System.Drawing;
@@ -17,6 +17,7 @@ namespace Drusus.Formularios
             precioDOLAR = DOLAR;
             InitializeComponent();
             buscarDatos(-1);
+            ThemeHelper.StyleForm(this);
         }
 
 
@@ -93,7 +94,7 @@ namespace Drusus.Formularios
             ClienteActual.nombre = txtNombre.Text;
 
             try { ClienteActual.direccion = txtDireccion.Text; } catch { ClienteActual.direccion = null; }
-            try { ClienteActual.cuil = txtCuil.Text; } catch { ClienteActual.direccion = null; }
+            try { ClienteActual.cuil = txtCuil.Text; } catch { ClienteActual.cuil = null; }
             try { ClienteActual.sieteDias = int.Parse(sieteTextBox.Text); } catch { ClienteActual.sieteDias = 0; }
             try { ClienteActual.catorceDias = int.Parse(catorceTextBox.Text); } catch { ClienteActual.catorceDias = 0; }
             try { ClienteActual.veintiunDias = int.Parse(ventiunTextBox.Text); } catch { ClienteActual.veintiunDias = 0; }

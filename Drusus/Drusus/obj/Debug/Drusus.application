@@ -4,7 +4,7 @@
   <description asmv2:publisher="Drusus" asmv2:product="Drusus" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true" />
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
-    <framework targetVersion="4.8.1" profile="Full" supportedRuntime="4.0.30319" />
+    <framework targetVersion="4.8" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
     <dependentAssembly dependencyType="install" codebase="Drusus.exe.manifest" size="9191">
@@ -14,7 +14,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>hfeaX60NPOF1qpsxU7itxuuGJKHMPZjEKrgsYC6Aebk=</dsig:DigestValue>
+        <dsig:DigestValue>QjPEssJMS21Vb5C7z/S2yhzglW2dmfPOIjolCss91ao=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

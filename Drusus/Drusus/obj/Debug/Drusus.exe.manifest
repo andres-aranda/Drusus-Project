@@ -50,7 +50,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ThC7Whr9Po/oRHL8T3m4bSRihnwnwXB2VxW29RHBitU=</dsig:DigestValue>
+        <dsig:DigestValue>5l24SnGTMMyT1s9eeQ3TuWkvgpuABTpm65/VqbNPBTc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -79,14 +79,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Drusus.exe" size="783360">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Drusus.exe" size="780288">
       <assemblyIdentity name="Drusus" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>m7Q/0M3wnR7Cw/wSsXlxa5KZHMfk8iEdlFgBwp9Ymac=</dsig:DigestValue>
+        <dsig:DigestValue>danbbk90TBRnxVjSc1J3slL/+lI4GYlvVj374y+3cow=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

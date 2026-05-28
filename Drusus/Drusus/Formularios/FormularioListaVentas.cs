@@ -1,4 +1,4 @@
-﻿using Datos;
+using Datos;
 using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
@@ -10,6 +10,7 @@ namespace Drusus.Formularios
         public FormularioListaVentas()
         {
             InitializeComponent();
+            ThemeHelper.StyleForm(this);
             dgvVentas.AutoGenerateColumns = false;
             DataGridViewComboBoxColumn colCliente = new DataGridViewComboBoxColumn
             {

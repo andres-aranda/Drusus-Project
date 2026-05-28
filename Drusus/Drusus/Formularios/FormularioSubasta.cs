@@ -1,4 +1,4 @@
-﻿using Datos;
+using Datos;
 using DocumentFormat.OpenXml.Packaging;
 using System;
 using System.Collections.Generic;
@@ -21,6 +21,7 @@ namespace Drusus.Formularios
 			InitializeComponent();
 			this.dgvSubasta.AutoGenerateColumns = false;
 			GenerarColumnas();
+			ThemeHelper.StyleForm(this);
 		}
 		public FormularioSubasta(double dolar)
 		{
@@ -28,6 +29,7 @@ namespace Drusus.Formularios
 			this.dgvSubasta.AutoGenerateColumns = false;
 			GenerarColumnas();
 			textboxDolar.Value = (decimal)dolar;
+			ThemeHelper.StyleForm(this);
 		}
 
 
@@ -119,7 +121,7 @@ namespace Drusus.Formularios
 
 			DataGridViewComboBoxColumn colCliente = new DataGridViewComboBoxColumn
 			{
-				Name = "Cliente",
+				Name = "cliente",
 			};
 
 

@@ -1,4 +1,4 @@
-﻿
+
 using Datos;
 using System;
 using System.Drawing;
@@ -15,6 +15,7 @@ namespace Drusus.Formularios
             InitializeComponent();
             calendario.Value = DateTime.Now;
             buscarDatos();
+            ThemeHelper.StyleForm(this);
         }
 
         public FormularioNuevaVenta(Cliente clienteEnviado)
@@ -28,6 +29,7 @@ namespace Drusus.Formularios
             cmbCliente.Visible = false;
             clienteLabel.Text = clienteEnviado.apellidoNombre;
             clienteLabel.Visible = true;
+            ThemeHelper.StyleForm(this);
         }
 
         private void buscarDatos()
@@ -39,16 +41,28 @@ namespace Drusus.Formularios
         }
         private void btnCrearVenta_Click(object sender, EventArgs e)
         {
+            if (clienteActual == null)
+            {
+                MessageBox.Show("Por favor, seleccione un cliente de la lista.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!int.TryParse(txtMonto.Text, out int parsedMonto) || parsedMonto <= 0)
+            {
+                MessageBox.Show("Por favor, ingrese un monto entero positivo válido.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             try
             {
-                monto = int.Parse(txtMonto.Text);
+                monto = parsedMonto;
                 if (ussCheckBox.Checked)
                 {
-                    clienteActual.deudaUSS += monto;
+                    clienteActual.deudaUSS = (clienteActual.deudaUSS ?? 0) + monto;
                 }
                 else
                 {
-                    clienteActual.sieteDias += monto;
+                    clienteActual.sieteDias = (clienteActual.sieteDias ?? 0) + monto;
                 }
                 persistenciaDeDatos();
                 mensajeAdios();
