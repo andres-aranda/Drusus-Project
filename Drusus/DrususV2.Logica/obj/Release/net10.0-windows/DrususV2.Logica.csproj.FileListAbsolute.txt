@@ -1,0 +1,16 @@
+C:\Users\andre\.gemini\antigravity\scratch\Drusus-Project\Drusus\DrususV2.Logica\bin\Release\net10.0-windows\DrususV2.Logica.deps.json
+C:\Users\andre\.gemini\antigravity\scratch\Drusus-Project\Drusus\DrususV2.Logica\bin\Release\net10.0-windows\DrususV2.Logica.dll
+C:\Users\andre\.gemini\antigravity\scratch\Drusus-Project\Drusus\DrususV2.Logica\bin\Release\net10.0-windows\DrususV2.Logica.pdb
+C:\Users\andre\.gemini\antigravity\scratch\Drusus-Project\Drusus\DrususV2.Logica\bin\Release\net10.0-windows\DrususV2.Datos.dll
+C:\Users\andre\.gemini\antigravity\scratch\Drusus-Project\Drusus\DrususV2.Logica\bin\Release\net10.0-windows\DrususV2.Datos.pdb
+C:\Users\andre\.gemini\antigravity\scratch\Drusus-Project\Drusus\DrususV2.Logica\obj\Release\net10.0-windows\DrususV2.Logica.csproj.AssemblyReference.cache
+C:\Users\andre\.gemini\antigravity\scratch\Drusus-Project\Drusus\DrususV2.Logica\obj\Release\net10.0-windows\DrususV2.Logica.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\andre\.gemini\antigravity\scratch\Drusus-Project\Drusus\DrususV2.Logica\obj\Release\net10.0-windows\DrususV2.Logica.AssemblyInfoInputs.cache
+C:\Users\andre\.gemini\antigravity\scratch\Drusus-Project\Drusus\DrususV2.Logica\obj\Release\net10.0-windows\DrususV2.Logica.AssemblyInfo.cs
+C:\Users\andre\.gemini\antigravity\scratch\Drusus-Project\Drusus\DrususV2.Logica\obj\Release\net10.0-windows\DrususV2.Logica.csproj.CoreCompileInputs.cache
+C:\Users\andre\.gemini\antigravity\scratch\Drusus-Project\Drusus\DrususV2.Logica\obj\Release\net10.0-windows\DrususV2.Logica.sourcelink.json
+C:\Users\andre\.gemini\antigravity\scratch\Drusus-Project\Drusus\DrususV2.Logica\obj\Release\net10.0-windows\DrususV2.DCD70B8D.Up2Date
+C:\Users\andre\.gemini\antigravity\scratch\Drusus-Project\Drusus\DrususV2.Logica\obj\Release\net10.0-windows\DrususV2.Logica.dll
+C:\Users\andre\.gemini\antigravity\scratch\Drusus-Project\Drusus\DrususV2.Logica\obj\Release\net10.0-windows\refint\DrususV2.Logica.dll
+C:\Users\andre\.gemini\antigravity\scratch\Drusus-Project\Drusus\DrususV2.Logica\obj\Release\net10.0-windows\DrususV2.Logica.pdb
+C:\Users\andre\.gemini\antigravity\scratch\Drusus-Project\Drusus\DrususV2.Logica\obj\Release\net10.0-windows\ref\DrususV2.Logica.dll

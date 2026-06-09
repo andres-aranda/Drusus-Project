@@ -1,0 +1,13 @@
+C:\Users\andre\.gemini\antigravity\scratch\Drusus-Project\Drusus\DrususV2.Datos\bin\Debug\net10.0\DrususV2.Datos.deps.json
+C:\Users\andre\.gemini\antigravity\scratch\Drusus-Project\Drusus\DrususV2.Datos\bin\Debug\net10.0\DrususV2.Datos.dll
+C:\Users\andre\.gemini\antigravity\scratch\Drusus-Project\Drusus\DrususV2.Datos\bin\Debug\net10.0\DrususV2.Datos.pdb
+C:\Users\andre\.gemini\antigravity\scratch\Drusus-Project\Drusus\DrususV2.Datos\obj\Debug\net10.0\DrususV2.Datos.csproj.AssemblyReference.cache
+C:\Users\andre\.gemini\antigravity\scratch\Drusus-Project\Drusus\DrususV2.Datos\obj\Debug\net10.0\DrususV2.Datos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\andre\.gemini\antigravity\scratch\Drusus-Project\Drusus\DrususV2.Datos\obj\Debug\net10.0\DrususV2.Datos.AssemblyInfoInputs.cache
+C:\Users\andre\.gemini\antigravity\scratch\Drusus-Project\Drusus\DrususV2.Datos\obj\Debug\net10.0\DrususV2.Datos.AssemblyInfo.cs
+C:\Users\andre\.gemini\antigravity\scratch\Drusus-Project\Drusus\DrususV2.Datos\obj\Debug\net10.0\DrususV2.Datos.csproj.CoreCompileInputs.cache
+C:\Users\andre\.gemini\antigravity\scratch\Drusus-Project\Drusus\DrususV2.Datos\obj\Debug\net10.0\DrususV2.Datos.sourcelink.json
+C:\Users\andre\.gemini\antigravity\scratch\Drusus-Project\Drusus\DrususV2.Datos\obj\Debug\net10.0\DrususV2.Datos.dll
+C:\Users\andre\.gemini\antigravity\scratch\Drusus-Project\Drusus\DrususV2.Datos\obj\Debug\net10.0\refint\DrususV2.Datos.dll
+C:\Users\andre\.gemini\antigravity\scratch\Drusus-Project\Drusus\DrususV2.Datos\obj\Debug\net10.0\DrususV2.Datos.pdb
+C:\Users\andre\.gemini\antigravity\scratch\Drusus-Project\Drusus\DrususV2.Datos\obj\Debug\net10.0\ref\DrususV2.Datos.dll
